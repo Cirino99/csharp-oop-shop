@@ -12,6 +12,7 @@ Console.WriteLine(prodotto1.GetPrezzo());
 Console.WriteLine(prodotto1.GetIva());
 Console.WriteLine(prodotto1.GetPrezzoIva());
 Console.WriteLine(prodotto1.GetNomeEsteso());
+Console.WriteLine(prodotto1.GetCodicePadLeft());
 
 public class Prodotto
 {
@@ -24,7 +25,7 @@ public class Prodotto
     public Prodotto()
     {
         Random random = new Random();
-        codice = random.Next(1, 1230587);
+        codice = random.Next(1, 12345678);
     }
 
     public int GetCodice()
@@ -70,5 +71,14 @@ public class Prodotto
     public string GetNomeEsteso()
     {
         return codice + " " + nome;
+    }
+    public string GetCodicePadLeft()
+    {
+        string codice = Convert.ToString(this.codice);
+        while (codice.Length < 8)
+        {
+            codice = '0' + codice;
+        }
+        return codice;
     }
 }
